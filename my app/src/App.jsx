@@ -14,18 +14,7 @@ function App() {
     }
 
     let result = [];
-    let denominations = [200, 100, 50]; // الفئات
-
-    denominations.forEach((note) => {
-      let count = Math.floor(money / note);
-      if (count > 0) {
-        result.push(`${count} × ${note}`);
-        money = money % note;
-      }
-    });
-
-    if (money > 0) {
-      result.push(المتبق`ي ${money} لا يمكن
+    let denominations = [200, 100, 50]; 
          صرفه`);
     }
 
