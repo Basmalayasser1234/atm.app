@@ -1,6 +1,7 @@
 import { useState } from "react";
-import './App.css';
-
+import "./App.css";
+import InputBox from "./components/InputBox";
+import OutputBox from "./components/OutputBox";
 
 function App() {
   const [amount, setAmount] = useState("");
@@ -14,7 +15,7 @@ function App() {
     }
 
     let result = [];
-    let denominations = [200, 100, 50]; 
+    let denominations = [200, 100, 50];
 
     denominations.forEach((note) => {
       let count = Math.floor(money / note);
@@ -27,42 +28,15 @@ function App() {
     if (money > 0) {
       result.push(المتبق`ي ${money} لا يمكن صرفه`);
     }
-  
 
     setNotes(result);
   };
 
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
-      {/* input + button */}
-      <input
-        type="number"
-        value={amount}
-        onChange={(e) => setAmount(e.target.value)}
-        placeholder="ادخل المبلغ"
-        style={{ padding: "10px", width: "200px", marginRight: "10px" }}
-      />
-      <button onClick={handleWithdraw} style={{ padding: "10px 20px" }}>
-        صرف
-      </button>
-
-      {/* output */}
-      <div
-        style={{
-          marginTop: "20px",
-          border: "1px solid #ccc",
-          padding: "15px",
-          width: "250px",
-          marginLeft: "auto",
-          marginRight: "auto",
-        }}
-      >
-        {notes.length > 0 ? (
-          notes.map((line, index) => <p key={index}>{line}</p>)
-        ) : (
-          <p>لم يتم إدخال مبلغ بعد</p>
-        )}
-      </div>
+    <div className="container">
+      <h1>ATM Machine</h1>
+      <InputBox amount={amount} setAmount={setAmount} handleWithdraw={handleWithdraw} />
+      <OutputBox notes={notes} />
     </div>
   );
 }
